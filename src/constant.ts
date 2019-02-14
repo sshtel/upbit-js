@@ -7,9 +7,6 @@ export class Constant {
   }
   private static constant: Constant | undefined = undefined;
 
-  public UPBIT_ACCESS_KEY: string | undefined = '';
-  public UPBIT_SECRET_KEY: string | undefined = '';
-
   // quotation API
   public UPBIT_URL_V1: string                 = 'api.upbit.com/v1';
   public UPBIT_URL_MARKET_ALL: string         = 'market/all';
@@ -40,8 +37,6 @@ export class Constant {
   public UPBIT_URL_DEPOSITS_COIN_ADDRESS      = 'deposits/coin_address';
 
   private constructor() {
-    this.UPBIT_ACCESS_KEY = process.env.UPBIT_ACCESS_KEY;
-    this.UPBIT_SECRET_KEY = process.env.UPBIT_SECRET_KEY;
   }
 
 }
