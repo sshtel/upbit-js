@@ -1,6 +1,6 @@
 {
   "name": "upbit-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Upbit exchange API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sshtel/upbit.git"
+    "url": "git+https://github.com/sshtel/upbit-js.git"
   },
   "keywords": [
     "cryptocurrency",
@@ -20,9 +20,9 @@
   "author": "Steve Song",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sshtel/upbit/issues"
+    "url": "https://github.com/sshtel/upbit-js/issues"
   },
-  "homepage": "https://github.com/sshtel/upbit#readme",
+  "homepage": "https://github.com/sshtel/upbit-js#readme",
   "devDependencies": {
     "@types/jasmine": "^2.5.41",
     "@types/jsonwebtoken": "^8.3.0",
@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "crypto": "^1.0.1",
-    "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "querystring": "^0.2.0",
