@@ -2,7 +2,8 @@
   "name": "upbit-js",
   "version": "0.0.1",
   "description": "Upbit exchange API",
-  "main": "./dist/app.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "build": "gulp build",
     "test": "gulp test"

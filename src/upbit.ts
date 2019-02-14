@@ -6,7 +6,7 @@ import * as exchange from './exchange';
 import { OrderState } from './interface';
 import * as quotation from './quotation';
 
-export class Upbit {
+export default class Upbit {
 
   // private auth: Auth;
   private marketList = [];
