@@ -86,7 +86,6 @@ export async function postOrders(market: string, side: string, volume: string, p
   const randomBytes = await crypto.randomBytes(64);
   const identifier = randomBytes.toString('hex');
   const body = {market, side, volume, price, ord_type: ordType, identifier};
-  console.log(body);
   const payload = {
     access_key: constant.UPBIT_ACCESS_KEY,
     nonce: (new Date).getTime(),
@@ -102,11 +101,25 @@ export async function postOrders(market: string, side: string, volume: string, p
     .set('Authorization', `Bearer ${token}`)
     .set('Content-type', 'application/json')
     .send(body);
-    // .query({ market })
-    // .query({ side })
-    // .query({ volume })
-    // .query({ price })
-    // .query({ ord_type: ordType })
-    // .query({ identifier });
+  return res.body;
+}
+
+export async function delOrders(uuid: string) {
+  const query = { uuid };
+  const payload = {
+    access_key: constant.UPBIT_ACCESS_KEY,
+    nonce: (new Date).getTime(),
+    query: querystring.stringify(query)
+  };
+  const token = sign(payload, constant.UPBIT_SECRET_KEY as string);
+  const uri = url.format({
+    protocol: 'https',
+    hostname: constant.UPBIT_URL_V1,
+    pathname: constant.UPBIT_URL_ORDER
+  });
+  const res = await request.del(uri)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-type', 'application/json')
+    .query({ uuid });
   return res.body;
 }
