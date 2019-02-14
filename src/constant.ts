@@ -42,8 +42,6 @@ export class Constant {
   private constructor() {
     this.UPBIT_ACCESS_KEY = process.env.UPBIT_ACCESS_KEY;
     this.UPBIT_SECRET_KEY = process.env.UPBIT_SECRET_KEY;
-    console.log(process.env.UPBIT_ACCESS_KEY);
-    console.log(process.env.UPBIT_SECRET_KEY);
   }
 
 }
