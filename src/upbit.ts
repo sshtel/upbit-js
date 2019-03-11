@@ -1,16 +1,20 @@
 
 import * as fs from 'fs';
 // import { Auth } from './auth';
-import { constant } from './constant';
-import * as exchange from './exchange';
+import { ExchangeApi } from './exchange';
 import { OrderState } from './interface';
 import * as quotation from './quotation';
 
 export default class Upbit {
 
-  // private auth: Auth;
+  private accessKey: string | undefined;
+  private secretKey: string | undefined;
+  private exchange: ExchangeApi;
   private marketList = [];
-  constructor() {
+  constructor(accessKey?: string, secretKey?: string) {
+    this.accessKey = accessKey;
+    this.secretKey = secretKey;
+    this.exchange = new ExchangeApi(accessKey, secretKey);
   }
 
   public async updateMarketAll() {
@@ -24,15 +28,15 @@ export default class Upbit {
   }
 
   public setAuth(accessKey: string, secretKey: string) {
-    constant.UPBIT_ACCESS_KEY = accessKey;
-    constant.UPBIT_SECRET_KEY = secretKey;
+    this.accessKey = accessKey;
+    this.secretKey = secretKey;
   }
 
   public getAccessToken() {
-    return constant.UPBIT_ACCESS_KEY;
+    return this.accessKey;
   }
   public getSecretToken() {
-    return constant.UPBIT_SECRET_KEY;
+    return this.secretKey;
   }
 
   public getMarketList() {
@@ -67,19 +71,24 @@ export default class Upbit {
 
   // exchange
   public async getAccounts() {
-    return exchange.getAccounts();
+    return this.exchange.getAccounts();
   }
   public async getOrdersChance(market: string) {
-    return exchange.getOrdersChance(market);
+    return this.exchange.getOrdersChance(market);
   }
   public async getOrder(uuid?: string, identifier?: string) {
-    return exchange.getOrder(uuid, identifier);
+    return this.exchange.getOrder(uuid, identifier);
   }
   public async getOrders(market: string, state?: OrderState, page?: number, orderBy?: string) {
-    return exchange.getOrders(market, 'wait', 1);
+    return this.exchange.getOrders(market, 'wait', 1);
   }
 
-  public async postOrder(market: string, side: string, volume: string, price: string, ordType: string) {
-    return exchange.postOrders(market, side, volume, price, ordType);
+  public async postOrders(market: string, side: string, volume: string, price: string, ordType: string) {
+    return this.exchange.postOrders(market, side, volume, price, ordType);
   }
+
+  public async delOrder(uuid: string) {
+    return this.exchange.delOrder(uuid);
+  }
+
 }
