@@ -5,7 +5,6 @@ import * as request from 'superagent';
 import * as url from 'url';
 import { constant } from './constant';
 import { OrderState } from './interface';
-// import * as queryEncode from '../../node_modules/querystring';
 
 export class ExchangeApi {
   private accessKey: string | undefined;

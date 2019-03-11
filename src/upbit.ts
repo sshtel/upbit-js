@@ -1,6 +1,5 @@
 
 import * as fs from 'fs';
-// import { Auth } from './auth';
 import { ExchangeApi } from './exchange';
 import { OrderState } from './interface';
 import * as quotation from './quotation';
