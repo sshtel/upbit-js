@@ -1,8 +1,16 @@
 # upbit-js
 
-This is a package that provides API of UPBIT crypto exchange which is most popular in Korea.
-Currently UPBIT API version v1.0.2 is implemented
-Users can easily access to UPBIT API using upbit-js
+upbit-js provides API of UPBIT crypto currency exchange.
+
+Currently UPBIT API version v1.0.2 is implemented.
+
+Using upbit-js users can:
+- easily access to UPBIT exchange's candle data, order books, private order list.
+- order bid and ask
+- cancel orders
+- see list of user's orders
+- see list of user's assets
+- see available markets
 
 
 ### Installation
