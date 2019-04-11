@@ -110,14 +110,14 @@ tradesTicks(param: {market: string, to?: string, count?: number, cursor?: string
 ```
 
 ```
-// multiple markets can be described by comma 
+// multiple markets can be iterated using comma 
 // ex) 'KRW-BTC,KRW-ETH,KRW-XRP'
 ticker(param: {markets: string})
 : Promise<void>
 ```
 
 ```
-// multiple markets can be described by comma 
+// multiple markets can be iterated using comma 
 // ex) 'KRW-BTC,KRW-ETH,KRW-XRP'
 orderBook(param: {markets: string})
 : Promise<void>
