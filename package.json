@@ -1,6 +1,6 @@
 {
   "name": "upbit-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Upbit exchange API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

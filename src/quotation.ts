@@ -70,7 +70,7 @@ export async function candlesMonths(param: {market: string, count?: number, to?:
 }
 
 // trade ticks
-export async function tradesTicks(param: {market: string, to: string, count: number, cursor: string}) {
+export async function tradesTicks(param: {market: string, to?: string, count?: number, cursor?: string}) {
   const { market, to, count, cursor } = param;
   const uri = url.format({
     protocol: 'https',
