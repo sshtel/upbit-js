@@ -45,3 +45,38 @@ export interface WsTickerValue {
   acc_trade_volume_24h?: number;
   stream_type?: string;
 }
+
+export interface WsOrderbookValue {
+  error?: any;
+  type?: string;
+  code?: string;
+  timestamp?: number;
+  total_ask_size?: number;
+  total_bid_size?: number;
+  orderbook_units?: OrderBookUnit[];
+}
+
+interface OrderBookUnit {
+    ask_price: number;
+    bid_price: number;
+    ask_size: number;
+    bid_size: number;
+}
+
+export interface WsTradeValue {
+  error?: any;
+  type?: string;
+  code?: string;
+  timestamp?: number;
+  trade_date?: string;
+  trade_time?: string;
+  trade_timestamp?: number;
+  trade_price?: number;
+  trade_volume?: number;
+  ask_bid?: string;
+  prev_closing_price?: number;
+  change?: string;
+  change_price?: number;
+  sequential_id?: number;
+  stream_type?: string;
+}
