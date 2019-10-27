@@ -1,6 +1,6 @@
 import * as uuidv4 from 'uuid/v4';
 import * as WebSocket from 'ws';
-import { WsTickerValue, WsType } from './interface';
+import { WsType } from './interface';
 import * as utils from './utils';
 
 export class UpbitWs {
@@ -10,7 +10,8 @@ export class UpbitWs {
   protected _codes: string[] = [ 'KRW-BTC '];
 
   protected handlers: Map<String, Function> = new Map<String, Function>();
-  protected objectMap: Map<String, WsTickerValue> = new Map<String, WsTickerValue>();
+  protected objectMap: Map<String, any>
+            = new Map<String, any>();
 
   constructor(codes: string[],
               type: WsType,
@@ -25,7 +26,7 @@ export class UpbitWs {
     if (codes) this._codes = codes;
 
     this._codes.forEach( value => {
-      this.objectMap.set(value, { type: 'ticker' });
+      this.objectMap.set(value, { type });
     });
 
     this.ws = new WebSocket(this.host);
@@ -60,7 +61,7 @@ export class UpbitWs {
       // for raw ws handler
       if (cb && cb.message) cb.message(value);
       // for registered handlers
-      const obj: WsTickerValue = JSON.parse(value);
+      const obj = JSON.parse(value);
       this.handlers.forEach( (cb, key) => {
         if (obj.code === key) {
           if (obj.error) cb(obj, undefined);
@@ -92,11 +93,11 @@ export class UpbitWs {
     this.handlers.set(code, handler);
   }
 
-  public getObject(code: string): WsTickerValue | undefined {
+  public getObject(code: string) {
     return this.objectMap.get(code);
   }
 
-  protected setObjectMap(obj: WsTickerValue) {
+  protected setObjectMap(obj) {
     if (obj.error) return;
     if (this.objectMap.has(obj.code!)) {
       this.objectMap.set(obj.code!, obj);
