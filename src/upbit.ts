@@ -39,8 +39,7 @@ export default class Upbit {
   }
 
   public getMarketList() {
-    return this.
-    marketList;
+    return this.marketList;
   }
 
   public async marketAll() {
