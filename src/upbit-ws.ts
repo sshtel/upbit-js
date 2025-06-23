@@ -39,7 +39,7 @@ export class UpbitWs {
           isOnlySnapshot: opts && opts.isOnlySnapshot || false,
           isOnlyRealtime: opts && opts.isOnlyRealtime || false }
       ];
-      if (utils.isDebug()) {
+      if (utils.isDebugMode()) {
         console.log('ws connected..');
         console.log('send..', msg);
       }
@@ -49,12 +49,12 @@ export class UpbitWs {
     });
 
     this.ws.on('close', () => {
-      if (utils.isDebug()) console.log('ws disconnected..');
+      if (utils.isDebugMode()) console.log('ws disconnected..');
       if (cb && cb.close) cb.close();
     });
 
     this.ws.on('message', value => {
-      if (utils.isDebug()) {
+      if (utils.isDebugMode()) {
         console.log('msg received..');
         console.log(JSON.parse(value));
       }
